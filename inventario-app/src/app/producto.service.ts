@@ -15,6 +15,19 @@ export class ProductoService {
   obtenerProductosLista(): Observable<Producto[]> {
     return this.http.get<Producto[]>(this.urlBase);
   }
+  //obtener producto por id
+  obtenerProductoPorId(id: number): Observable<Producto> {
+    return this.http.get<Producto>(`${this.urlBase}/${id}`);
+  }
+
+  //actualizar producto por id
+  actualizarProducto(productoActualizado: Producto): Observable<Producto> {
+    return this.http.put<Producto>(
+      `${this.urlBase}/${productoActualizado.idProducto}`,
+      productoActualizado
+    );
+  }
+
   // agregar un nuevo producto
   agregarProducto(producto: Producto): Observable<Producto> {
     return this.http.post<Producto>(this.urlBase, producto);

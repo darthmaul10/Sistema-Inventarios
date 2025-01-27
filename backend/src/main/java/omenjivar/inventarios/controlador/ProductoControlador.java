@@ -46,4 +46,20 @@ public class ProductoControlador {
             throw new RecursoNoEncontradoExcepcion("No se encontro el id:"+id);
         }
     }
+
+    //actualizar producto
+    @PutMapping("/productos/{id}")
+    public ResponseEntity<Producto> actualizarProducto(
+            @PathVariable int id,
+            @RequestBody Producto productoActualizado){
+        Producto producto = this.productoServicio.buscarProductoPorId(id);
+        if (producto==null){
+            throw new RecursoNoEncontradoExcepcion("No se encontro el id:"+id);
+        }
+        producto.setDescripcion(productoActualizado.getDescripcion());
+        producto.setExistencia(productoActualizado.getExistencia());
+        producto.setPrecio(productoActualizado.getPrecio());
+        this.productoServicio.guardarProducto(producto);
+        return ResponseEntity.ok(producto);
+    }
 }
