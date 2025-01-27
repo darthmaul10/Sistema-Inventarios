@@ -32,4 +32,9 @@ export class ProductoService {
   agregarProducto(producto: Producto): Observable<Producto> {
     return this.http.post<Producto>(this.urlBase, producto);
   }
+
+  //eliminar producto por id
+  eliminarProductoPorId(id: number): Observable<Object> {
+    return this.http.delete(`${this.urlBase}/${id}`);
+  }
 }

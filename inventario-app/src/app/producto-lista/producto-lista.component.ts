@@ -35,4 +35,19 @@ export class ProductoListaComponent implements OnInit {
   editarProducto(id: number): void {
     this.router.navigate(['editar-producto', id]);
   }
+  eliminarProducto(id: number): void {
+    if (confirm(`Seguro desea eliminar el producto #${id}`) == true) {
+      this.productoService.eliminarProductoPorId(id).subscribe({
+        next: (respuesta) => {
+          alert(`Producto #${id} Eliminado`);
+        },
+        error: (e) => {
+          console.log('Error: ' + e);
+        },
+        complete: () => {
+          this.obtenerProductos();
+        },
+      });
+    }
+  }
 }
