@@ -16,7 +16,7 @@ Al finalizar este proyecto, tendrás una comprensión básica de las tecnología
   - Spring Boot (Java)
   - RESTful APIs
   - Spring JPA & Hibernate
-  - MySQL (Base de Datos)
+  - Microsoft SQL Server (Base de Datos)
 
 ## Funcionalidades
 
